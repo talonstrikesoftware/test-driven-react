@@ -9,4 +9,14 @@ describe('fizzBuzz()', () => {
   it('returns the given number for multiples of neither 3 nor 5', () => {
     expect(fizzBuzz(2)).toBe('2');
   });
+
+  it('returns "Fizz" for multiples of 3', () => {
+    expect(fizzBuzz(3)).toBe('Fizz');
+  });
+
+  it('returns "Buzz" for multiples of 5', () => {
+    expect(fizzBuzz(5)).toBe('Buzz');
+    expect(fizzBuzz(10)).toBe('Buzz');
+  });
+
 });
