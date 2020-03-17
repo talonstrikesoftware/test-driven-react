@@ -22,7 +22,7 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -\
 
 WORKDIR /home/node/app
 
-EXPOSE 8888
+EXPOSE 8080
 EXPOSE 9009
 EXPOSE 3000
 

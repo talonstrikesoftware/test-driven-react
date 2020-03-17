@@ -53,6 +53,22 @@ describe('Carousel', () => {
     ).toBe("Next");
   });
   
+  it('passes defaultImg and defaultImgHeight to the CarouselSlide', () => {
+    const defaultImg = () => 'test';
+    const defaultImgHeight = 1234;
+    wrapper.setProps({ defaultImg, defaultImgHeight});
+    expect(wrapper.find(CarouselSlide).prop('Img')).toBe(defaultImg);
+    expect(wrapper.find(CarouselSlide).prop("imgHeight")).toBe(defaultImgHeight);
+  });
+
+  it('allows individual slides to override Img and imgHeight', () => {
+    const Img = () => 'test';
+    const imgHeight = 1234;
+    wrapper.setProps({ slides:[{ ...slides[0], Img, imgHeight }]});
+    expect(wrapper.find(CarouselSlide).prop("Img")).toBe(Img);
+    expect(wrapper.find(CarouselSlide).prop("imgHeight")).toBe(imgHeight);
+  });
+  
   describe('with a middle slide selected', () => {
     beforeEach(() => {
       wrapper.setState({ slideIndex: 1});
@@ -91,10 +107,16 @@ describe('Carousel', () => {
     let slideProps;
 
     slideProps = wrapper.find(CarouselSlide).props();
-    expect(slideProps).toEqual(slides[0]);
+    expect(slideProps).toEqual({
+      ...CarouselSlide.defaultProps,
+      ...slides[0],
+    });
     wrapper.setState({ slideIndex: 1});
     slideProps = wrapper.find(CarouselSlide).props();
-    expect(slideProps).toEqual(slides[1]);
+    expect(slideProps).toEqual({
+      ...CarouselSlide.defaultProps,
+      ...slides[1],
+    });
   });
 
 });
