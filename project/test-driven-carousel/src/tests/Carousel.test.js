@@ -11,18 +11,18 @@ describe("Carousel", () => {
     {
       imgUrl: "https://example.com/slide1.png",
       description: "Slide 1",
-      attribution: "Uno Pizzeria"
+      attribution: "Uno Pizzeria",
     },
     {
       imgUrl: "https://example.com/slide2.png",
       description: "Slide 2",
-      attribution: "Dos Equis"
+      attribution: "Dos Equis",
     },
     {
       imgUrl: "https://example.com/slide3.png",
       description: "Slide 3",
-      attribution: "Three Amigos"
-    }
+      attribution: "Three Amigos",
+    },
   ];
 
   // There are for when the Carousel is not in a HOC
@@ -197,14 +197,14 @@ describe("Carousel", () => {
       slideProps = wrapper.find(CarouselSlide).props();
       expect(slideProps).toEqual({
         ...CarouselSlide.defaultProps,
-        ...slides[0]
+        ...slides[0],
       });
 
       wrapper.setProps({ slideIndex: 1 });
       slideProps = wrapper.find(CarouselSlide).props();
       expect(slideProps).toEqual({
         ...CarouselSlide.defaultProps,
-        ...slides[1]
+        ...slides[1],
       });
     });
 
