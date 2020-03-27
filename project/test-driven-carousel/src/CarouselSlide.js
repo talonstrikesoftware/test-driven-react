@@ -9,14 +9,17 @@ const DefaultImg = styled.img`
     typeof props.imgHeight === 'number' ? `${props.imgHeight}px` : props.imgHeight};
 `;
 
-const CarouselSlide = ({Img, imgUrl, imgHeight, description, attribution, ...rest}) => (
+const CarouselSlide = ({Img, imgUrl, imgHeight, description, attribution, ...rest}) => {
+  //console.dir(attribution);
+  return (
   <figure {...rest}>
     <Img src={imgUrl} imgHeight={imgHeight} />
     <figcaption>
       <strong>{description}</strong> {attribution}
     </figcaption>  
   </figure>
-);
+  )
+};
 
 CarouselSlide.propTypes = {
   Img: PropTypes.elementType,

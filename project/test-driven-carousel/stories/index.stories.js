@@ -4,6 +4,7 @@ import slides from  "../example/slides";
 
 import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { withKnobs, number } from '@storybook/addon-knobs';
 import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
@@ -20,8 +21,10 @@ storiesOf('Button', module)
     </Button>
   ));
 
-  storiesOf('Carousel', module).add('default', () => {
+const stories = storiesOf('Carousel', module);
+stories.addDecorator(withKnobs);
+stories.add('default', () => {
     return (
-      <Carousel slides={slides}/>
+      <Carousel autoAdvanceDelay={number('autoAdvanceDelay',10e3)} slides={slides} onIndexChange={ action('onIndexChange') }/>
     )
   })
